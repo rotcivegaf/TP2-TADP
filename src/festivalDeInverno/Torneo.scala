@@ -1,11 +1,9 @@
 package festivalDeInverno
 
-import dragones.Dragon
+
+import participantes.Dragon
 import participantes.Vikingo
 
-class Torneo {
-  val participantes: List[Vikingo]
-  val dragones: List[Dragon]
-  val postas: List[Posta]
+case class Torneo(participantes: List[Vikingo], dragones: List[Dragon], postas: List[Posta]) {
   
 }

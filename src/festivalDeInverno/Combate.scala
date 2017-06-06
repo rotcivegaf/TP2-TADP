@@ -2,6 +2,6 @@ package festivalDeInverno
 
 import participantes.Vikingo
 
-class Combate(val participantes: List[Vikingo]) extends Posta{
-  
+abstract class Combate(participantes: List[Vikingo]) extends Posta{
+  val incHambre = 10;
 }

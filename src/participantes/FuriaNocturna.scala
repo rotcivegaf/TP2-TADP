@@ -1,6 +1,7 @@
 package participantes
 
-case class FuriaNocturna(peso: Float) extends Dragon{
-  
-	def velVuelo:Float = super.velVuelo()*3
+case class FuriaNocturna(val peso: Float, val velBase: Float = 60, val danio: Float, itemNecesario:Item) extends Dragon{  
+ 
+  override def velVuelo: Float =  super.velVuelo*3
+ 
 }

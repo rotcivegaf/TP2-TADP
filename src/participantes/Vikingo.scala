@@ -1,6 +1,6 @@
 package participantes
 
-class Vikingo(val peso: Float, val velocidad: Float, val barbarosidad: Int, val item: Item,  var nivHambre: Int = 0) {
+class Vikingo(val peso: Float, val barbarosidad: Int, val item: Item, val nivHambre: Int = 0, val velocidad: Float) {
 
   require(peso >= 0, "El peso debe ser positivo")
   require(velocidad >= 0, "La velocidad debe ser positiva")
@@ -12,7 +12,7 @@ class Vikingo(val peso: Float, val velocidad: Float, val barbarosidad: Int, val 
   
   def montar(unDragon:Dragon):Any = {
     if(unDragon.monturaExitosa(this))
-      new Jinete(unDragon)
+      new Jinete(peso, barbarosidad, item, nivHambre, velocidad,unDragon)
     else
       this
   }

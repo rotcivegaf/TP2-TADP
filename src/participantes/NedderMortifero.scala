@@ -1,6 +1,6 @@
 package participantes
 
-case class NedderMortifero(peso: Float, velBase: Float = 60, itemNecesario:Item) extends Dragon{
+case class NedderMortifero(peso: Float, velBase: Float = 60, itemNecesario:Item = null) extends Dragon{
   
   val danio: Float = 150
   

@@ -1,12 +1,12 @@
 package participantes
 
-class Jinete(peso: Float, barbarosidad: Int, item: Item, nivHambre: Int, velocidad: Float, dragon:Dragon)
-  extends Vikingo(peso, barbarosidad, item, nivHambre, velocidad = dragon.velVuelo - peso){
+case class Jinete(vikingo: Vikingo, dragon:Dragon) extends Participante {
+ 
+  def cargaMax: Double = vikingo.peso - dragon.cargaMax
+  
+  def danio:Float = vikingo.danio + dragon.danio
     
-  override def cargaMax: Double = peso - dragon.cargaMax  
+  def incHambre(cant: Int) = vikingo.nivHambre + 5
   
-  override def danio:Float = super.danio + dragon.danio
-  
-  
-  //Los jinetes sólo incrementan 5% de hambre independientemente de la posta a jugar
+  def puedeParticipar(cant:Int): Boolean = vikingo.nivHambre + 5 < 100
 }

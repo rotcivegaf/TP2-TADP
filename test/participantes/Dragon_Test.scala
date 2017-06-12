@@ -16,7 +16,7 @@ class Dragon_Test {
   @Before
   def setup() = {
     unItem = new Item(100)
-    unVikingo = new Vikingo(100, 50, 150, item = unItem)
+    //unVikingo = new Vikingo(100, 50, 150, item = unItem)
     unNedder = new NedderMortifero(500, 60, unItem)
     unFuria = new FuriaNocturna(30, 60,50, unItem)
     unGronckle = new Gronckle(500, 300, unItem)

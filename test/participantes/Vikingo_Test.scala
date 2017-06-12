@@ -22,4 +22,15 @@ class Vikingo_Test {
   @Test def cargaMax_test() = {
     assertEquals((100*0.5) + (150*2), unVikingo.cargaMax, 0.1)
   }
+  
+  @Test def incHambre_test() = {
+    unVikingo.incHambre(50)
+    
+    assertEquals(50, unVikingo.nivHambre)
+  }
+  
+  @Test def puedeParticipar_test() = {
+    assertTrue(unVikingo.puedeParticipar(50))
+    assertFalse(unVikingo.puedeParticipar(120))
+  }
 } 

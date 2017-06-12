@@ -3,9 +3,14 @@ package festivalDeInverno
 import participantes.Vikingo
 
 abstract class Posta {
-  require(incHambre >= 0 && incHambre <=100, "El incremento de hambre debe ser de 0% a 100%")
+  val hambreInc: Int
   
-  val incHambre: Int
   
-  def participar(participantes: List[Vikingo])
+  
+  def darHambre(participantes: List[Vikingo]) = {participantes.map(_.incHambre(hambreInc))}
+
+  def participar(participantes: List[Vikingo]) = {
+  		
+  		darHambre(participantes)
+  }
 }

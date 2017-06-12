@@ -2,6 +2,12 @@ package festivalDeInverno
 
 import participantes.Vikingo
 
-abstract class Carrera(val participantes: List[Vikingo]) extends Posta{
+class Carrera(km: Int) extends Posta{
+  val hambreInc: Int = km
   
+  override def participar(participantes: List[Vikingo]) = {
+    participantes.map(_.incHambre(hambreInc))
+    darHambre(participantes)
+  }
+
 } 

@@ -1,6 +1,6 @@
 package participantes
 
-abstract class Dragon() {
+trait Dragon {
   val peso: Float
   val velBase: Float
   val danio: Float

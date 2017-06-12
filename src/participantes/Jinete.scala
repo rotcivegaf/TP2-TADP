@@ -9,4 +9,6 @@ case class Jinete(vikingo: Vikingo, dragon:Dragon) extends Participante {
   def incHambre(cant: Int) = vikingo.nivHambre + 5
   
   def puedeParticipar(cant:Int): Boolean = vikingo.nivHambre + 5 < 100
+  
+  //def desmontar():
 }

@@ -4,24 +4,26 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.Assert._
 
-class Vikingo_Test {
+class Jinete_Test {
   var unVikingo:Vikingo = null
   var unItem:Item = null
   
   var unNedder:NedderMortifero = null
   var unFuria:FuriaNocturna = null
-  //var unGronckle:Gronckle = null
+  var unGronckle:Gronckle = null
   
-  var unParticipante:Participante = null
+  var unJinete:Jinete = null
 
   @Before
   def setup() = {
-    unItem = new Item(danio = 100)
+    unItem = new Arma(danio = 100)
     unVikingo = new Vikingo(peso = 100, velocidad = 50, barbarosidad = 150, item = unItem, nivHambre = 0)
     
     unNedder = new NedderMortifero(500, 60)
-    unFuria = new FuriaNocturna(peso = 100*6, velBase = 60, danio = 50)
-    //unGronckle = new Gronckle(500, 300)
+    unFuria = new FuriaNocturna(30, 60,50)
+    unGronckle = new Gronckle(500, 300)
+    
+    //unJinete = 
   }
 
   @Test def danio_test() = {
@@ -43,14 +45,4 @@ class Vikingo_Test {
     assertTrue(unVikingo.puedeParticipar(50))
     assertFalse(unVikingo.puedeParticipar(120))
   }
-  
-  @Test def montar_test() = {
-    unParticipante = unVikingo.montar(unNedder)
-    
-    assertEquals(unVikingo, unParticipante)
-    
-    unParticipante = unVikingo.montar(unFuria)
-    
-    assertEquals(new Jinete(unVikingo, unFuria), unParticipante)
-  }  
 } 

@@ -1,8 +1,11 @@
 package festivalDeInverno
 
-import participantes.Vikingo
+import participantes.Participante
 
-abstract class Pesca extends Posta{
-  val nivHambre: Int = 5
+case class Pesca(pesoMinimo:Float = 0) extends Posta{
+  val cantHambre: Int = 5
   
+  def cumpleCriterio(participante: Participante):Boolean = participante.cargaMax > pesoMinimo
+  
+  def getPuntuacion(participante: Participante): Double = participante.cargaMax
 }

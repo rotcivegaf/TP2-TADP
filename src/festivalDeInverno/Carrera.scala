@@ -1,13 +1,11 @@
 package festivalDeInverno
 
-import participantes.Vikingo
+import participantes.Participante
 
-class Carrera(km: Int) extends Posta{
-  val hambreInc: Int = km
+case class Carrera(km: Int, monturaNecesaria:Boolean = false) extends Posta{
+  val cantHambre: Int = km
   
-  override def participar(participantes: List[Vikingo]) = {
-    participantes.map(_.incHambre(hambreInc))
-    darHambre(participantes)
-  }
-
+  def cumpleCriterio(participante: Participante):Boolean = !monturaNecesaria /*|| TODO que sea jinete*/
+  
+  def getPuntuacion(participante: Participante): Double = participante.velocidad
 } 

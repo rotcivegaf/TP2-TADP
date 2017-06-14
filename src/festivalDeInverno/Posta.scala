@@ -1,16 +1,20 @@
 package festivalDeInverno
 
-import participantes.Vikingo
+import participantes.Participante
 
-abstract class Posta {
-  val hambreInc: Int
+trait Posta {
+  val cantHambre: Int
   
+  def cumpleCriterio(participante: Participante):Boolean
   
+  def puedeParticipar(participante: Participante):Boolean = {
+    cumpleCriterio(participante) && participante.puedeParticipar(cantHambre)
+   }
   
-  def darHambre(participantes: List[Vikingo]) = {participantes.map(_.incHambre(hambreInc))}
-
-  def participar(participantes: List[Vikingo]) = {
-  		
-  		darHambre(participantes)
+  def getPuntuacion(participante: Participante): Double
+    
+  def participar(participante: Participante) = {
+    participante.darHambre(cantHambre)
+    getPuntuacion(participante)
   }
 }

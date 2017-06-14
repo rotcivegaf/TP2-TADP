@@ -1,9 +1,12 @@
 package participantes
 
 trait Participante {
+  val velocidad:Float
+  val barbarosidad: Int
+  val item: Item
   
   def cargaMax: Double
   def danio: Float
-  def incHambre(cant: Int)
+  def darHambre(cant: Int)
   def puedeParticipar(cant:Int): Boolean
 }

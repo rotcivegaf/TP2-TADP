@@ -9,4 +9,5 @@ trait Participante {
   def danio: Float
   def darHambre(cant: Int)
   def puedeParticipar(cant:Int): Boolean
+  
 }

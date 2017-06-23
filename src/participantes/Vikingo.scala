@@ -14,9 +14,6 @@ case class Vikingo(peso: Float, barbarosidad: Int, item: Item = null, var nivHam
   
   def puedeParticipar(cant:Int): Boolean = nivHambre + cant < 100
   
-  def montar(dragon: Dragon): Participante  = 
-    if (dragon.monturaExitosa(this))
-      new Jinete(this, dragon)
-    else
-      this
+  def montar(dragon: Dragon): Jinete = 
+    new Jinete(this, dragon)
 }

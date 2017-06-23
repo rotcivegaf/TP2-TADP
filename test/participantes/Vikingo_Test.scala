@@ -16,7 +16,7 @@ class Vikingo_Test {
 
   @Before
   def setup() = {
-    unItem = new Item(danio = 100)
+    unItem = new Arma(danio = 100)
     unVikingo = new Vikingo(peso = 100, velocidad = 50, barbarosidad = 150, item = unItem, nivHambre = 0)
     
     unNedder = new NedderMortifero(500, 60)

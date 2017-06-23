@@ -13,6 +13,7 @@ import participantes.Comestible
 import participantes.Arma
 
 import participantes.NedderMortifero
+import participantes.Dragon
 
 
 class Posta_Test {
@@ -20,6 +21,8 @@ class Posta_Test {
   var pesca  :Pesca   = null
   var combate:Combate = null
   var unNedder:NedderMortifero = null
+  var unNedder2:NedderMortifero = null
+  var dragones: List[Dragon] = null
   
   var hipo   :Vikingo = null
   var astrid :Vikingo = null
@@ -27,6 +30,7 @@ class Posta_Test {
   var patapez:Vikingo = null
   
   var jinete:Jinete = null
+  var jinete2:Jinete = null
   
   var sistemaDeVuelo: SistemaVuelo = null
   var comestible    : Comestible = null
@@ -46,11 +50,14 @@ class Posta_Test {
     patapez = new Vikingo(peso = 80 , velocidad = 35, barbarosidad = 100, item = comestible)
     
     unNedder = new NedderMortifero(peso = 700, velBase = 130)
+    unNedder2 = new NedderMortifero(peso = 1700, velBase = 130)
+//    dragones = unNedder :: dragones 
     jinete = hipo.montar(unNedder)
+    jinete2 = hipo.montar(unNedder2)
     
-    carrera = new Carrera(km = 100, monturaNecesaria = false)
-    pesca   = new Pesca(pesoMinimo = 0)
-    combate = new Combate(barbarosidadMin = 0, arma = null)
+    carrera = new Carrera(km = 100, monturaNecesaria = true)
+    pesca   = new Pesca(pesoMinimo = 235)
+    combate = new Combate(barbarosidadMin = 70, arma = hacha)
     
     
   }
@@ -65,5 +72,16 @@ class Posta_Test {
     assertEquals(235, combate.getPuntuacion(jinete), 0.1)
   }
   
-
+  @Test def puedeParticipar_test() = {
+    assertFalse(carrera.puedeParticipar(hipo))
+    assertTrue(carrera.puedeParticipar(jinete))
+    assertFalse(pesca.puedeParticipar(hipo))//cargaMax = 230
+    assertTrue(pesca.puedeParticipar(patapez))//cargaMax = 240
+    assertTrue(combate.puedeParticipar(astrid))
+    assertFalse(combate.puedeParticipar(hipo))    
+  }
+  
+  @Test def mejorDragon_test() = {
+    assertEquals(unNedder, carrera.mejorDragon(hipo, List[Dragon](unNedder2)))
+  }
 }

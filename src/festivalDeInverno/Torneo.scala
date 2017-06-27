@@ -5,23 +5,25 @@ import participantes.Participante
 import participantes.Jinete
 import participantes.Vikingo
 
-case class Torneo(participantes: List[Participante], var dragones: List[Dragon], postas: List[Posta]) {
-    /*
-  def realizarTorneo(): Option[Vikingo] = {
-    postas.foldLeft (null) {
-      (semilla, posta) => {
-
-        if(!vikingosEnPie.isEmpty)
-          vikingosEnPie.head
+case class Torneo(participantes: List[Participante], dragones: List[Dragon], postas: List[Posta]) {
+  
+  def realizarTorneo(): Option[Participante] = {
+    postas.foldLeft (None :Option[Participante]) {(semilla, posta) => {
+        var participantesEnPie = participarEnUna(posta)
+        participantesEnPie match {
+          case List() => None
+          case h::Nil => return Option(h)
+          case d => Some(d.head)
+        }
       }
     }
-  }*/
+  }
   
-  def participarEnUna(posta:Posta){
+  def participarEnUna(posta:Posta): List[Participante] = {
     participantes
+      .map(montar(_, posta))  
       .filter(posta.puedeParticipar)
-      .map(montar(_, posta))
-      .sortBy(posta.participar)
+      .sortWith(posta.participar)
       .map(posta.efecto)
       .map(desmontar)
   }

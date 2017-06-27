@@ -20,18 +20,19 @@ trait Posta {
     return participante
   }
     
-  def participar(participante: Participante) = {
-    getPuntuacion(participante)
-  }
-
   def mejorDragon(vikingo: Vikingo, dragones: List[Dragon]): Option[Dragon] = {
     dragones
       .filter(_.monturaExitosa(vikingo))
-      .sortBy(getPuntuacionJinete(vikingo, _))
+      .sortWith(getPuntuacionJinete(vikingo, _, _))
       .headOption
   }
   
-  def getPuntuacionJinete(vikingo: Vikingo, dragon: Dragon){
-    getPuntuacion(vikingo.montar(dragon))
+  def participar(participante1: Participante, participante2: Participante): Boolean = {
+    getPuntuacion(participante1)>getPuntuacion(participante2)
+  }
+
+  
+  def getPuntuacionJinete(vikingo: Vikingo, dragon1: Dragon, dragon2: Dragon): Boolean = {
+    getPuntuacion(vikingo.montar(dragon1))>getPuntuacion(vikingo.montar(dragon2))
   }
 }

@@ -13,6 +13,7 @@ import participantes.Comestible
 import participantes.Arma
 
 import participantes.NedderMortifero
+import participantes.FuriaNocturna
 import participantes.Dragon
 
 
@@ -22,7 +23,7 @@ class Posta_Test {
   var combate:Combate = null
   var unNedder:NedderMortifero = null
   var unNedder2:NedderMortifero = null
-  var dragones: List[Dragon] = null
+  var unFuria:FuriaNocturna = null
   
   var hipo   :Vikingo = null
   var astrid :Vikingo = null
@@ -50,16 +51,15 @@ class Posta_Test {
     patapez = new Vikingo(peso = 80 , velocidad = 35, barbarosidad = 100, item = comestible)
     
     unNedder = new NedderMortifero(peso = 700, velBase = 130)
-    unNedder2 = new NedderMortifero(peso = 1700, velBase = 130)
-//    dragones = unNedder :: dragones 
+    unNedder2 = new NedderMortifero(peso = 700, velBase = 129)
+    unFuria = new FuriaNocturna(peso = 1700, velBase = 130, danio = 100, itemNecesario = maza)
+ 
     jinete = hipo.montar(unNedder)
-    jinete2 = hipo.montar(unNedder2)
+    //jinete2 = hipo.montar(unNedder2)
     
     carrera = new Carrera(km = 100, monturaNecesaria = true)
     pesca   = new Pesca(pesoMinimo = 235)
     combate = new Combate(barbarosidadMin = 70, arma = hacha)
-    
-    
   }
   
   @Test def getPuntuacion_test() = {
@@ -82,6 +82,8 @@ class Posta_Test {
   }
   
   @Test def mejorDragon_test() = {
-    assertEquals(unNedder, carrera.mejorDragon(hipo, List[Dragon](unNedder2)))
+    assertEquals(None, carrera.mejorDragon(hipo, List[Dragon](unFuria)))
+    assertEquals(Some(unNedder2), carrera.mejorDragon(hipo, List[Dragon](unFuria, unNedder2)))
+    assertEquals(Some(unNedder), carrera.mejorDragon(hipo, List[Dragon](unFuria, unNedder2, unNedder)))
   }
 }

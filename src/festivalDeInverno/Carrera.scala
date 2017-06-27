@@ -9,7 +9,7 @@ case class Carrera(km: Int, monturaNecesaria:Boolean = false) extends Posta{
   def cumpleCriterio(participante: Participante):Boolean ={
     participante match {    
       case _: Jinete => return true
-      case _ => return !monturaNecesaria
+      case _ => return false
     }
   }
   

@@ -6,6 +6,7 @@ import org.junit.Assert._
 
 import participantes.Vikingo
 import participantes.Jinete
+import participantes.Patapez
 
 
 import participantes.SistemaVuelo
@@ -31,7 +32,7 @@ class Torneo_Test {
   var hipo   :Vikingo = null
   var astrid :Vikingo = null
   var patan  :Vikingo = null
-  var patapez:Vikingo = null
+  var patapez:Patapez = null
   
   var jinete:Jinete = null
   
@@ -42,15 +43,15 @@ class Torneo_Test {
   
   @Before
   def setup() = {
-    comestible     = new Comestible()
+    comestible     = new Comestible(25)
     sistemaDeVuelo = new SistemaVuelo()
     hacha = new Arma(30)
     maza  = new Arma(100)
     
     hipo = new Vikingo(peso = 100, velocidad = 50, barbarosidad = 1, item = sistemaDeVuelo)
-    astrid = new Vikingo(peso = 100, velocidad = 50, barbarosidad = 150, item = hacha, nivHambre = 0)
+    astrid = new Vikingo(peso = 100, velocidad = 50, barbarosidad = 150, item = hacha)
     patan = new Vikingo(peso = 200, velocidad = 50, barbarosidad = 150, item = maza)
-    patapez = new Vikingo(peso = 100, velocidad = 50, barbarosidad = 150, item = comestible)
+    patapez = new Patapez(peso = 100, velocidad = 50, barbarosidad = 150, item = comestible)
     
     unNedder = new NedderMortifero(peso = 500, velBase = 300, sistemaDeVuelo)
     unNedder2 = new NedderMortifero(peso = 700, velBase = 129)

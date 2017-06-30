@@ -17,7 +17,7 @@ class Vikingo_Test {
   @Before
   def setup() = {
     unItem = new Arma(danio = 100)
-    unVikingo = new Vikingo(peso = 100, velocidad = 50, barbarosidad = 150, item = unItem, nivHambre = 0)
+    unVikingo = new Vikingo(peso = 100, velocidad = 50, barbarosidad = 150, item = unItem)
     
     unNedder = new NedderMortifero(500, 60)
     unFuria = new FuriaNocturna(peso = 100*6, velBase = 60, danio = 50)
@@ -38,17 +38,13 @@ class Vikingo_Test {
     
     assertEquals(50, unVikingo.nivHambre)
   }
-  
+
   @Test def puedeParticipar_test() = {
     assertTrue(unVikingo.puedeParticipar(50))
     assertFalse(unVikingo.puedeParticipar(120))
   }
   
   @Test def montar_test() = {
-    unParticipante = unVikingo.montar(unNedder)
-    
-    assertEquals(unVikingo, unParticipante)
-    
     unParticipante = unVikingo.montar(unFuria)
     
     assertEquals(new Jinete(unVikingo, unFuria), unParticipante)

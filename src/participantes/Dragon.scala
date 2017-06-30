@@ -14,6 +14,6 @@ trait Dragon {
   require(danio >= 0, "El danio debe ser positivo")
   
   def velVuelo: Float =  velBase - peso
-  def monturaExitosa(unVikingo: Vikingo):Boolean = (unVikingo.peso <= cargaMax) && (unVikingo.barbarosidad >= barbarosidadMinima) && 
-    (unVikingo.item == itemNecesario || itemNecesario == null)
+  def monturaExitosa(desmontado: Desmontado):Boolean = (desmontado.peso <= cargaMax) && (desmontado.barbarosidad >= barbarosidadMinima) && 
+    (desmontado.item == itemNecesario || itemNecesario == null)
 }

@@ -4,6 +4,6 @@ case class Gronckle(peso: Float, override val cargaMax:Double, itemNecesario:Ite
   val danio: Float =  peso*5 
   lazy val velBase:Float = velBase/2
   
-  override def monturaExitosa(unVikingo: Vikingo):Boolean = (unVikingo.peso <= cargaMax)
+  override def monturaExitosa(desmontado: Desmontado):Boolean = (desmontado.peso <= cargaMax)
   
 }

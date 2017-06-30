@@ -17,7 +17,7 @@ class Jinete_Test {
   @Before
   def setup() = {
     unItem = new Arma(danio = 100)
-    unVikingo = new Vikingo(peso = 100, velocidad = 50, barbarosidad = 150, item = unItem, nivHambre = 0)
+    unVikingo = new Vikingo(peso = 100, velocidad = 50, barbarosidad = 150, item = unItem)
     
     unNedder = new NedderMortifero(500, 60)
     unFuria = new FuriaNocturna(30, 60,50)

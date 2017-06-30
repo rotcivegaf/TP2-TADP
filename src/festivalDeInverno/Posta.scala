@@ -1,7 +1,7 @@
 package festivalDeInverno
 
 import participantes.Participante
-import participantes.Vikingo
+import participantes.Desmontado
 import participantes.Jinete
 import participantes.Dragon
 
@@ -17,13 +17,14 @@ trait Posta {
   
   def efecto(participante: Participante): Participante = {
     participante.darHambre(cantHambre)
+    participante.usarItemPostposta()
     return participante
   }
     
-  def mejorDragon(vikingo: Vikingo, dragones: List[Dragon]): Option[Dragon] = {
+  def mejorDragon(desmontado: Desmontado, dragones: List[Dragon]): Option[Dragon] = {
     dragones
-      .filter(_.monturaExitosa(vikingo))
-      .sortWith(getPuntuacionJinete(vikingo, _, _))
+      .filter(_.monturaExitosa(desmontado))
+      .sortWith(getPuntuacionJinete(desmontado, _, _))
       .headOption
   }
   
@@ -32,7 +33,7 @@ trait Posta {
   }
 
   
-  def getPuntuacionJinete(vikingo: Vikingo, dragon1: Dragon, dragon2: Dragon): Boolean = {
-    getPuntuacion(vikingo.montar(dragon1))>getPuntuacion(vikingo.montar(dragon2))
+  def getPuntuacionJinete(desmontado: Desmontado, dragon1: Dragon, dragon2: Dragon): Boolean = {
+    getPuntuacion(desmontado.montar(dragon1))>getPuntuacion(desmontado.montar(dragon2))
   }
 }

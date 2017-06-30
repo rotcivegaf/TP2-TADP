@@ -4,6 +4,6 @@ case class NedderMortifero(peso: Float, velBase: Float = 60, itemNecesario:Item 
   
   val danio: Float = 150
   
-  override def monturaExitosa(unVikingo: Vikingo):Boolean = super.monturaExitosa(unVikingo) && 
-    (unVikingo.danio <= danio) && (itemNecesario == null || itemNecesario == unVikingo.item)
+  override def monturaExitosa(desmontado: Desmontado):Boolean = super.monturaExitosa(desmontado) && 
+    (desmontado.danio <= danio) && (itemNecesario == null || itemNecesario == desmontado.item)
 }

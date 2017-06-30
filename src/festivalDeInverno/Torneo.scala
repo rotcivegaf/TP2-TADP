@@ -3,7 +3,7 @@ package festivalDeInverno
 import participantes.Dragon
 import participantes.Participante
 import participantes.Jinete
-import participantes.Vikingo
+import participantes.Desmontado
 
 case class Torneo(participantes: List[Participante], dragones: List[Dragon], postas: List[Posta]) {
   
@@ -28,16 +28,16 @@ case class Torneo(participantes: List[Participante], dragones: List[Dragon], pos
       .map(desmontar)
   }
   
-  def montarMejorDragon(vikingo: Vikingo, posta: Posta): Participante = {
-    val dragon = posta.mejorDragon(vikingo, dragones)
+  def montarMejorDragon(desmontado: Desmontado, posta: Posta): Participante = {
+    val dragon = posta.mejorDragon(desmontado, dragones)
     dragon match {
-      case None => return vikingo
+      case None => return desmontado
       case Some(d) => {
-        if (posta.getPuntuacion(vikingo) > posta.getPuntuacion(vikingo.montar(d))){
-          return vikingo
+        if (posta.getPuntuacion(desmontado) > posta.getPuntuacion(desmontado.montar(d))){
+          return desmontado
         }else{
           dragones.filter(_ == d)
-          return vikingo.montar(d)
+          return desmontado.montar(d)
         }
       }
     }
@@ -45,7 +45,7 @@ case class Torneo(participantes: List[Participante], dragones: List[Dragon], pos
   
   def montar(participante: Participante, posta: Posta): Participante = {
     participante match {       
-      case _: Vikingo => return montarMejorDragon(participante.asInstanceOf[Vikingo], posta)
+      case _: Desmontado => return montarMejorDragon(participante.asInstanceOf[Desmontado], posta)
       case _ => return participante
     }
   }
@@ -54,7 +54,7 @@ case class Torneo(participantes: List[Participante], dragones: List[Dragon], pos
     participante match {
       case j: Jinete =>{
         j.dragon :: dragones
-        return j.vikingo
+        return j.desmontado
       }
       case _ => return participante
     }
